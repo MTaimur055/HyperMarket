@@ -10,14 +10,23 @@ import Divider from '@material-ui/core/Divider';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import MailIcon from '@material-ui/icons/Mail';
 
+import SubjectIcon from '@material-ui/icons/Subject';
+import HomeTwoToneIcon from '@material-ui/icons/HomeTwoTone';
+import Collapse from '@material-ui/core/Collapse';
+import ViewDayTwoToneIcon from '@material-ui/icons/ViewDayTwoTone';
+import ExpandLess from '@material-ui/icons/ExpandLess';
+import ExpandMore from '@material-ui/icons/ExpandMore';
+import StarBorder from '@material-ui/icons/StarBorder';
+import RestaurantMenuTwoToneIcon from '@material-ui/icons/RestaurantMenuTwoTone';
+import StorefrontTwoToneIcon from '@material-ui/icons/StorefrontTwoTone';
+import PermIdentityTwoToneIcon from '@material-ui/icons/PermIdentityTwoTone';
+import TimelineTwoToneIcon from '@material-ui/icons/TimelineTwoTone';
 
 const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
-  root: {
+  root1: {
     display: 'flex',
   },
   appBar: {
@@ -37,13 +46,26 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
     padding: theme.spacing(3),
   },
+  root: {
+    width: '100%',
+    maxWidth: 360,
+    backgroundColor: theme.palette.background.paper,
+  },
+  nested: {
+    paddingLeft: theme.spacing(4),
+  },
 }));
 
 export default function ClippedDrawer() {
   const classes = useStyles();
+  const [open, setOpen] = React.useState(true);
+
+  const handleClick = () => {
+    setOpen(!open);
+  }
 
   return (
-    <div className={classes.root}>
+    <div className={classes.root1}>
       <CssBaseline />
       <AppBar position="fixed" className={classes.appBar}>
         <Toolbar>
@@ -63,23 +85,85 @@ export default function ClippedDrawer() {
       >
         <Toolbar />
         <div className={classes.drawerContainer}>
-          <List>
-            {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-              <ListItem button key={text}>
-                <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-                <ListItemText primary={text} />
-              </ListItem>
-            ))}
-          </List>
+        <List
+      
+      className={classes.root}
+    >
+      <ListItem button>
+        <ListItemIcon>
+          < SubjectIcon />
+        </ListItemIcon>
+        <ListItemText primary="Get Started" />
+      </ListItem>
+      <ListItem button>
+        <ListItemIcon>
+          <HomeTwoToneIcon/>
+        </ListItemIcon>
+        <ListItemText primary="Home" />
+      </ListItem>
+      <ListItem button>
+        <ListItemIcon>
+          < ViewDayTwoToneIcon />
+        </ListItemIcon>
+        <ListItemText primary="Orders" />
+      </ListItem>
+      <ListItem button>
+        <ListItemIcon>
+          <  RestaurantMenuTwoToneIcon  />
+        </ListItemIcon>
+        <ListItemText primary="Restaurants" />
+      </ListItem>
+      <ListItem button>
+        <ListItemIcon>
+          < StorefrontTwoToneIcon  />
+        </ListItemIcon>
+        <ListItemText primary="Products" />
+      </ListItem>
+     <ListItem button>
+        <ListItemIcon>
+          < PermIdentityTwoToneIcon />
+        </ListItemIcon>
+        <ListItemText primary="Customers" />
+      </ListItem>
+      <ListItem button>
+        <ListItemIcon>
+          < TimelineTwoToneIcon/>
+        </ListItemIcon>
+        <ListItemText primary="Analytics" />
+      </ListItem>
+      <ListItem button onClick={handleClick}>
+        
+        <ListItemText primary="Marketing" />
+        {open ? <ExpandLess /> : <ExpandMore />}
+      </ListItem>
+      <Collapse in={open} timeout="auto" unmountOnExit>
+        <List component="div" disablePadding>
+          <ListItem button className={classes.nested}>
+        
+          </ListItem>
+          <ListItem button className={classes.nested}>
+            <ListItemIcon>
+              <StarBorder />
+            </ListItemIcon>
+            <ListItemText primary="Starred" />
+          </ListItem>
+          <ListItem button className={classes.nested}>
+            <ListItemIcon>
+              <StarBorder />
+            </ListItemIcon>
+            <ListItemText primary="Starred" />
+          </ListItem>
+          <ListItem button className={classes.nested}>
+            <ListItemIcon>
+              <StarBorder />
+            </ListItemIcon>
+            <ListItemText primary="Starred" />
+          </ListItem>
+        </List>
+      </Collapse>
+    </List>
           <Divider />
-          <List>
-            {['All mail', 'Trash', 'Spam'].map((text, index) => (
-              <ListItem button key={text}>
-                <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-                <ListItemText primary={text} />
-              </ListItem>
-            ))}
-          </List>
+         
         </div>
       </Drawer>
       <main className={classes.content}>
