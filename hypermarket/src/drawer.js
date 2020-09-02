@@ -10,7 +10,7 @@ import Divider from '@material-ui/core/Divider';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-
+import './drawer.css';
 import SubjectIcon from '@material-ui/icons/Subject';
 import HomeTwoToneIcon from '@material-ui/icons/HomeTwoTone';
 import Collapse from '@material-ui/core/Collapse';
@@ -54,6 +54,7 @@ const useStyles = makeStyles((theme) => ({
   nested: {
     paddingLeft: theme.spacing(4),
   },
+ 
 }));
 
 export default function ClippedDrawer() {
@@ -70,9 +71,25 @@ export default function ClippedDrawer() {
       <AppBar position="fixed" className={classes.appBar}>
         <Toolbar>
           <Typography variant="h6" noWrap>
-            <div>
-            <img src="https://jungleworks.com/wp-content/uploads/2020/04/OG_Yelo.png" alt="Girl in a jacket" width="50px" height="60px"/>
-            </div>
+         
+         <div _ngcontent-c7="" class="row col-8 image-card-row d-flex ng-star-inserted">
+      <div _ngcontent-c7="" class="d-flex align-items-center header-strip">
+      <img src='https://admin.yelo.red/en/assets/images/yelo-logo.png' alt='logo'></img>
+         <div _ngcontent-c7="" class="image-card ng-star-inserted">
+            <i _ngcontent-c7="" class="yf yf-browser logo-img"></i>
+            <p _ngcontent-c7="" class="m-0">View Website</p>
+          </div>
+    
+        <div _ngcontent-c7="" class="image-card ng-star-inserted " style={{margin: '0 25px'}}>
+          <i _ngcontent-c7="" class="yf yf-phone-call logo-img"></i>
+          <p _ngcontent-c7="" class="m-0">Customer App</p>
+        </div>
+      <div _ngcontent-c7="" class="image-card ng-star-inserted">
+          <i _ngcontent-c7="" class="yf yf-merchanticon logo-img"></i>
+          <p _ngcontent-c7="" class="m-0">Business App</p>
+        </div>
+      </div>
+    </div>
           </Typography>
         </Toolbar>
       </AppBar>
