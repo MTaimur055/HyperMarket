@@ -35,7 +35,7 @@
 *, ::after, ::before {
     box-sizing: border-box;
 }
-user agent stylesheet
+
 div {
     display: block;
 }
@@ -51,4 +51,10 @@ body {
 }
 :root {
     --color: #1f8ceb;
+}
+
+img{
+    
+    height: 100px;
+    width: 100px;
 }

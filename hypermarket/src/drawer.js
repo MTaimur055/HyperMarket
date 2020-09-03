@@ -22,7 +22,7 @@ import RestaurantMenuTwoToneIcon from '@material-ui/icons/RestaurantMenuTwoTone'
 import StorefrontTwoToneIcon from '@material-ui/icons/StorefrontTwoTone';
 import PermIdentityTwoToneIcon from '@material-ui/icons/PermIdentityTwoTone';
 import TimelineTwoToneIcon from '@material-ui/icons/TimelineTwoTone';
-
+import HelpIcon from '@material-ui/icons/Help';
 const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
@@ -87,7 +87,16 @@ export default function ClippedDrawer() {
       <div _ngcontent-c7="" class="image-card ng-star-inserted">
           <i _ngcontent-c7="" class="yf yf-merchanticon logo-img"></i>
           <p _ngcontent-c7="" class="m-0">Business App</p>
+          
         </div>
+        <div> 
+          
+          <img src='https://www.flaticon.com/premium-icon/icons/svg/3311/3311804.svg' ></img>
+          <img src='https://image.flaticon.com/icons/svg/3382/3382705.svg' ></img>
+          <img src='https://image.flaticon.com/icons/svg/891/891012.svg' ></img>
+          </div> 
+
+
       </div>
     </div>
           </Typography>
