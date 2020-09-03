@@ -1,200 +1,203 @@
 import React from 'react';
+import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
-import Drawer from '@material-ui/core/Drawer';
-import AppBar from '@material-ui/core/AppBar';
 import CssBaseline from '@material-ui/core/CssBaseline';
+import Drawer from '@material-ui/core/Drawer';
+import Box from '@material-ui/core/Box';
+import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import List from '@material-ui/core/List';
 import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
-import './drawer.css';
-import SubjectIcon from '@material-ui/icons/Subject';
-import HomeTwoToneIcon from '@material-ui/icons/HomeTwoTone';
-import Collapse from '@material-ui/core/Collapse';
-import ViewDayTwoToneIcon from '@material-ui/icons/ViewDayTwoTone';
-import ExpandLess from '@material-ui/icons/ExpandLess';
-import ExpandMore from '@material-ui/icons/ExpandMore';
-import StarBorder from '@material-ui/icons/StarBorder';
-import RestaurantMenuTwoToneIcon from '@material-ui/icons/RestaurantMenuTwoTone';
-import StorefrontTwoToneIcon from '@material-ui/icons/StorefrontTwoTone';
-import PermIdentityTwoToneIcon from '@material-ui/icons/PermIdentityTwoTone';
-import TimelineTwoToneIcon from '@material-ui/icons/TimelineTwoTone';
-import HelpIcon from '@material-ui/icons/Help';
+import IconButton from '@material-ui/core/IconButton';
+import Badge from '@material-ui/core/Badge';
+import Container from '@material-ui/core/Container';
+import Grid from '@material-ui/core/Grid';
+import Paper from '@material-ui/core/Paper';
+import Link from '@material-ui/core/Link';
+import MenuIcon from '@material-ui/icons/Menu';
+import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
+import NotificationsIcon from '@material-ui/icons/Notifications';
+import { mainListItems, secondaryListItems } from './listItems';
+import Chart from './Chart';
+import Deposits from './Deposits';
+import Orders from './Orders';
+import Site from './sites';
+import ContactSupportIcon from '@material-ui/icons/ContactSupport';
+import ControlCameraIcon from '@material-ui/icons/ControlCamera';
+
 const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
-  root1: {
+  root: {
     display: 'flex',
+  },
+  toolbar: {
+    paddingRight: 24, // keep right padding when drawer closed
+  },
+  toolbarIcon: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'flex-end',
+    padding: '0 8px',
+    ...theme.mixins.toolbar,
   },
   appBar: {
     zIndex: theme.zIndex.drawer + 1,
+    transition: theme.transitions.create(['width', 'margin'], {
+      easing: theme.transitions.easing.sharp,
+      duration: theme.transitions.duration.leavingScreen,
+    }),
   },
-  drawer: {
-    width: drawerWidth,
-    flexShrink: 0,
+  appBarShift: {
+    marginLeft: drawerWidth,
+    width: `calc(100% - ${drawerWidth}px)`,
+    transition: theme.transitions.create(['width', 'margin'], {
+      easing: theme.transitions.easing.sharp,
+      duration: theme.transitions.duration.enteringScreen,
+    }),
+  },
+  menuButton: {
+    marginRight: 36,
+  },
+  menuButtonHidden: {
+    display: 'none',
+  },
+  title: {
+    flexGrow: 1,
   },
   drawerPaper: {
+    position: 'relative',
+    whiteSpace: 'nowrap',
     width: drawerWidth,
+    transition: theme.transitions.create('width', {
+      easing: theme.transitions.easing.sharp,
+      duration: theme.transitions.duration.enteringScreen,
+    }),
   },
-  drawerContainer: {
-    overflow: 'auto',
+  drawerPaperClose: {
+    overflowX: 'hidden',
+    transition: theme.transitions.create('width', {
+      easing: theme.transitions.easing.sharp,
+      duration: theme.transitions.duration.leavingScreen,
+    }),
+    width: theme.spacing(7),
+    [theme.breakpoints.up('sm')]: {
+      width: theme.spacing(9),
+    },
   },
+  appBarSpacer: theme.mixins.toolbar,
   content: {
     flexGrow: 1,
-    padding: theme.spacing(3),
+    height: '100vh',
+    overflow: 'auto',
   },
-  root: {
-    width: '100%',
-    maxWidth: 360,
-    backgroundColor: theme.palette.background.paper,
+  container: {
+    paddingTop: theme.spacing(4),
+    paddingBottom: theme.spacing(4),
   },
-  nested: {
-    paddingLeft: theme.spacing(4),
+  paper: {
+    padding: theme.spacing(2),
+    display: 'flex',
+    overflow: 'auto',
+    flexDirection: 'column',
   },
- 
+  fixedHeight: {
+    height: 240,
+  },
 }));
 
-export default function ClippedDrawer() {
+export default function Dashboard() {
   const classes = useStyles();
   const [open, setOpen] = React.useState(true);
-
-  const handleClick = () => {
-    setOpen(!open);
-  }
+  const handleDrawerOpen = () => {
+    setOpen(true);
+  };
+  const handleDrawerClose = () => {
+    setOpen(false);
+  };
+  const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
 
   return (
-    <div className={classes.root1}>
+    <div className={classes.root}>
       <CssBaseline />
-      <AppBar position="fixed" className={classes.appBar}>
-        <Toolbar>
-          <Typography variant="h6" noWrap>
+      <AppBar position="absolute" className={clsx(classes.appBar, open && classes.appBarShift)}>
+        <Toolbar className={classes.toolbar}>
+          <IconButton
+            edge="start"
+            color="inherit"
+            aria-label="open drawer"
+            onClick={handleDrawerOpen}
+            className={clsx(classes.menuButton, open && classes.menuButtonHidden)}
+          >
+            <MenuIcon />
+          </IconButton>
+          <Typography component="h1" variant="h5" color="inherit" noWrap className={classes.title}>
+          <img src='https://admin.yelo.red/en/assets/images/yelo-logo.png' alt='logo'></img>
          
-         <div _ngcontent-c7="" class="row col-8 image-card-row d-flex ng-star-inserted">
-      <div _ngcontent-c7="" class="d-flex align-items-center header-strip">
-      <img src='https://admin.yelo.red/en/assets/images/yelo-logo.png' alt='logo'></img>
-         <div _ngcontent-c7="" class="image-card ng-star-inserted">
-            <i _ngcontent-c7="" class="yf yf-browser logo-img"></i>
-            <p _ngcontent-c7="" class="m-0">View Website</p>
-          </div>
-    
-        <div _ngcontent-c7="" class="image-card ng-star-inserted " style={{margin: '0 25px'}}>
-          <i _ngcontent-c7="" class="yf yf-phone-call logo-img"></i>
-          <p _ngcontent-c7="" class="m-0">Customer App</p>
-        </div>
-      <div _ngcontent-c7="" class="image-card ng-star-inserted">
-          <i _ngcontent-c7="" class="yf yf-merchanticon logo-img"></i>
-          <p _ngcontent-c7="" class="m-0">Business App</p>
-          
-        </div>
-        <div> 
-          
-          <img src='https://www.flaticon.com/premium-icon/icons/svg/3311/3311804.svg' ></img>
-          <img src='https://image.flaticon.com/icons/svg/3382/3382705.svg' ></img>
-          <img src='https://image.flaticon.com/icons/svg/891/891012.svg' ></img>
-          </div> 
-
-
-      </div>
-    </div>
           </Typography>
+          <Site/>
+          <IconButton color="inherit">
+            
+              < ContactSupportIcon />
+          
+          </IconButton>
+          <IconButton color="inherit">
+          
+              <ControlCameraIcon />
+          
+          </IconButton>
+          <IconButton color="inherit">
+            <Badge badgeContent={4} color="secondary">
+              <NotificationsIcon />
+            </Badge>
+          </IconButton>
         </Toolbar>
       </AppBar>
       <Drawer
-        className={classes.drawer}
         variant="permanent"
         classes={{
-          paper: classes.drawerPaper,
+          paper: clsx(classes.drawerPaper, !open && classes.drawerPaperClose),
         }}
+        open={open}
       >
-        <Toolbar />
-        <div className={classes.drawerContainer}>
-        <List
-      
-      className={classes.root}
-    >
-      <ListItem button>
-        <ListItemIcon>
-          < SubjectIcon />
-        </ListItemIcon>
-        <ListItemText primary="Get Started" />
-      </ListItem>
-      <ListItem button>
-        <ListItemIcon>
-          <HomeTwoToneIcon/>
-        </ListItemIcon>
-        <ListItemText primary="Home" />
-      </ListItem>
-      <ListItem button>
-        <ListItemIcon>
-          < ViewDayTwoToneIcon />
-        </ListItemIcon>
-        <ListItemText primary="Orders" />
-      </ListItem>
-      <ListItem button>
-        <ListItemIcon>
-          <  RestaurantMenuTwoToneIcon  />
-        </ListItemIcon>
-        <ListItemText primary="Restaurants" />
-      </ListItem>
-      <ListItem button>
-        <ListItemIcon>
-          < StorefrontTwoToneIcon  />
-        </ListItemIcon>
-        <ListItemText primary="Products" />
-      </ListItem>
-     <ListItem button>
-        <ListItemIcon>
-          < PermIdentityTwoToneIcon />
-        </ListItemIcon>
-        <ListItemText primary="Customers" />
-      </ListItem>
-      <ListItem button>
-        <ListItemIcon>
-          < TimelineTwoToneIcon/>
-        </ListItemIcon>
-        <ListItemText primary="Analytics" />
-      </ListItem>
-      <ListItem button onClick={handleClick}>
-        
-        <ListItemText primary="Marketing" />
-        {open ? <ExpandLess /> : <ExpandMore />}
-      </ListItem>
-      <Collapse in={open} timeout="auto" unmountOnExit>
-        <List component="div" disablePadding>
-          <ListItem button className={classes.nested}>
-        
-          </ListItem>
-          <ListItem button className={classes.nested}>
-            <ListItemIcon>
-              <StarBorder />
-            </ListItemIcon>
-            <ListItemText primary="Starred" />
-          </ListItem>
-          <ListItem button className={classes.nested}>
-            <ListItemIcon>
-              <StarBorder />
-            </ListItemIcon>
-            <ListItemText primary="Starred" />
-          </ListItem>
-          <ListItem button className={classes.nested}>
-            <ListItemIcon>
-              <StarBorder />
-            </ListItemIcon>
-            <ListItemText primary="Starred" />
-          </ListItem>
-        </List>
-      </Collapse>
-    </List>
-          <Divider />
-         
+        <div className={classes.toolbarIcon}>
+          <IconButton onClick={handleDrawerClose}>
+            <ChevronLeftIcon />
+          </IconButton>
         </div>
+        <Divider />
+        <List>{mainListItems}</List>
+        <Divider />
+        <List>{secondaryListItems}</List>
       </Drawer>
       <main className={classes.content}>
-        <Toolbar />
-       
+        <div className={classes.appBarSpacer} />
+        <Container maxWidth="lg" className={classes.container}>
+          <Grid container spacing={3}>
+            {/* Chart */}
+            <Grid item xs={12} md={8} lg={9}>
+              <Paper className={fixedHeightPaper}>
+                <Chart />
+              </Paper>
+            </Grid>
+            {/* Recent Deposits */}
+            <Grid item xs={12} md={4} lg={3}>
+              <Paper className={fixedHeightPaper}>
+                <Deposits />
+              </Paper>
+            </Grid>
+            {/* Recent Orders */}
+            <Grid item xs={12}>
+              <Paper className={classes.paper}>
+                <Orders />
+              </Paper>
+            </Grid>
+          </Grid>
+          <Box pt={4}>
+            
+          </Box>
+        </Container>
       </main>
     </div>
   );
