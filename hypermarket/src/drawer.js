@@ -25,6 +25,7 @@ import Orders from './Orders';
 import Site from './sites';
 import ContactSupportIcon from '@material-ui/icons/ContactSupport';
 import ControlCameraIcon from '@material-ui/icons/ControlCamera';
+import Button from '@material-ui/core/Button';
 
 const drawerWidth = 240;
 
@@ -105,6 +106,13 @@ const useStyles = makeStyles((theme) => ({
   fixedHeight: {
     height: 240,
   },
+  paper1: {
+    width: "100%",
+    height: "120px",
+    padding:"10px",
+    margin:"5px"
+  },
+  
 }));
 
 export default function Dashboard() {
@@ -174,10 +182,24 @@ export default function Dashboard() {
       <main className={classes.content}>
         <div className={classes.appBarSpacer} />
         <Container maxWidth="lg" className={classes.container}>
+        <Grid item xs={12} md={4} lg={3}></Grid>
+        <Paper className={classes.paper1}>
+        <p style={{fontSize:'17px',fontStyle:'italic',fontWeight:'bold'}} >Welcome to your marketplace
+        <a href='https://www.youtube.com'> 
+        <Button variant="contained" color="primary" disableElevation style={{float:'right', padding:'4px'}}>
+        View your website
+    </Button>
+            </a></p>
+            <p >To get your marketplace up and running, there are a few essential steps you need to take, as listed below. <br/>
+       Once finished, your marketplace will be ready to receive its first visitor! </p>
+     </Paper>
+     <Grid/>
           <Grid container spacing={3}>
             {/* Chart */}
+            
             <Grid item xs={12} md={8} lg={9}>
               <Paper className={fixedHeightPaper}>
+                
                 <Chart />
               </Paper>
             </Grid>
