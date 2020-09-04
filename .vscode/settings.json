@@ -1,5 +1,7 @@
 {
     "cSpell.words": [
+        "aria",
+        "aria labelledby",
         "c",
         "clsx",
         "color",
@@ -9,8 +11,11 @@
         "icon",
         "icon contianer",
         "item",
+        "labelledby",
         "merchanticon",
         "mixins",
+        "new",
+        "new selecteds",
         "ngcontent",
         "ngcontent c",
         "nghost",
@@ -18,6 +23,7 @@
         "onclickoutside",
         "ptooltip",
         "scholz",
+        "selecteds",
         "shutterstock",
         "sidemenu",
         "sidemenu item text",

@@ -11,6 +11,8 @@ import HomeRoundedIcon from '@material-ui/icons/HomeRounded';
 import RestaurantMenuRoundedIcon from '@material-ui/icons/RestaurantMenuRounded';
 import StorefrontRoundedIcon from '@material-ui/icons/StorefrontRounded';
 import TimelineRoundedIcon from '@material-ui/icons/TimelineRounded';
+import { Link } from '@material-ui/core';
+
 export const mainListItems = (
   <div>
         <ListSubheader inset >General</ListSubheader>
@@ -48,7 +50,9 @@ export const mainListItems = (
       <ListItemIcon>
         <PeopleIcon />
       </ListItemIcon>
+      <Link href="./Customers.js">
       <ListItemText primary="Customers" />
+      </Link>
     </ListItem>
     
     <ListItem button>

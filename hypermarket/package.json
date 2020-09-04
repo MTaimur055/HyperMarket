@@ -20,7 +20,9 @@
     "react-dom": "^16.13.1",
     "react-google-charts": "^3.0.15",
     "react-onclickoutside": "^6.9.0",
+    "react-router": "^5.2.0",
     "react-scripts": "3.4.3",
+    "react-search-box": "^2.0.2",
     "reactstrap": "^8.5.1",
     "recharts": "^1.8.5"
   },
