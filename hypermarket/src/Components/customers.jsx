@@ -1,3 +1,5 @@
+
+  
 import React from 'react';
 import Button from '@material-ui/core/Button';
 import SearchIcon from '@material-ui/icons/Search';
@@ -22,7 +24,7 @@ import Switch from '@material-ui/core/Switch';
 import DeleteIcon from '@material-ui/icons/Delete';
 import FilterListIcon from '@material-ui/icons/FilterList';
 import SaveIcon from '@material-ui/icons/Save';
-
+import home from './home';
 
 function createData(ID, Name, Email,Phone,LastUsedPlatform,RegistrationDate,Actions) {
   return {ID, Name, Email,Phone,LastUsedPlatform,RegistrationDate,Actions };
@@ -63,6 +65,8 @@ function EnhancedTableHead(props) {
   };
 
   return (
+   
+ 
     <TableHead>
       <TableRow>
        
@@ -133,6 +137,7 @@ const EnhancedTableToolbar = (props) => {
         [classes.highlight]: numSelected > 0,
       })}
     >
+      
       {numSelected > 0 ? (
         <Typography className={classes.title} color="inherit" variant="subtitle1" component="div">
           {numSelected} selected

@@ -4,27 +4,39 @@ import { makeStyles } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Drawer from '@material-ui/core/Drawer';
 import Box from '@material-ui/core/Box';
+import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
-import List from '@material-ui/core/List';
-import Typography from '@material-ui/core/Typography';
+import Chart from './Charts';
+import Deposits from './Deposits';
+import Orders from './Orders';
+
 import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
-import Badge from '@material-ui/core/Badge';
+import Button from '@material-ui/core/Button';
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
+import {Link} from 'react-router-dom'
+import FolderIcon from '@material-ui/icons/Folder';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-import NotificationsIcon from '@material-ui/icons/Notifications';
-import { mainListItems, secondaryListItems } from './listItems';
-import Chart from './Chart';
-import Deposits from './Deposits';
-import Orders from './Orders';
-import Site from './sites';
-import ContactSupportIcon from '@material-ui/icons/ContactSupport';
-import ControlCameraIcon from '@material-ui/icons/ControlCamera';
-import Button from '@material-ui/core/Button';
+
+import { ListItem, ListItemIcon, ListItemText } from '@material-ui/core';
+
+
+import List from '@material-ui/core/List';
+
+import DashboardIcon from '@material-ui/icons/Dashboard';
+import PeopleIcon from '@material-ui/icons/People';
+import AssignmentIcon from '@material-ui/icons/Assignment';
+import HomeRoundedIcon from '@material-ui/icons/HomeRounded';
+
+
+
+
+
+
 
 const drawerWidth = 240;
 
@@ -32,6 +44,10 @@ const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
   },
+  linke: {
+    color:"white",
+    paddingRight:"1rem"
+ },
   toolbar: {
     paddingRight: 24, // keep right padding when drawer closed
   },
@@ -105,18 +121,16 @@ const useStyles = makeStyles((theme) => ({
   fixedHeight: {
     height: 240,
   },
-  paper1: {
-    width: "100%",
-    height: "120px",
-    padding:"10px",
-    margin:"5px"
-  },
   
 }));
 
-export default function Dashboard() {
+const Home=() => {
   const classes = useStyles();
   const [open, setOpen] = React.useState(true);
+  
+
+
+  
   const handleDrawerOpen = () => {
     setOpen(true);
   };
@@ -128,8 +142,7 @@ export default function Dashboard() {
   return (
     <div className={classes.root}>
       <CssBaseline />
-      <AppBar position="absolute" className={clsx(classes.appBar, open && classes.appBarShift)}>
-        <Toolbar className={classes.toolbar}>
+      
           <IconButton
             edge="start"
             color="inherit"
@@ -139,28 +152,8 @@ export default function Dashboard() {
           >
             <MenuIcon />
           </IconButton>
-          <Typography component="h1" variant="h5" color="inherit" noWrap className={classes.title}>
-          <img src='https://admin.yelo.red/en/assets/images/yelo-logo.png' alt='logo'></img>
          
-          </Typography>
-          <Site/>
-          <IconButton color="inherit">
-            
-              < ContactSupportIcon />
-          
-          </IconButton>
-          <IconButton color="inherit">
-          
-              <ControlCameraIcon />
-          
-          </IconButton>
-          <IconButton color="inherit">
-            <Badge badgeContent={4} color="secondary">
-              <NotificationsIcon />
-            </Badge>
-          </IconButton>
-        </Toolbar>
-      </AppBar>
+   
       <Drawer
         variant="permanent"
         classes={{
@@ -174,12 +167,77 @@ export default function Dashboard() {
           </IconButton>
         </div>
         <Divider />
-        <List>{mainListItems}</List>
+        <Link to="/">
+        <ListItem button>
+        <ListItemIcon>
+          <DashboardIcon />
+        </ListItemIcon>
+        <ListItemText primary="Get Started" />
+      
+      </ListItem>
+      </Link>
+      <Link to="/Home1">
+        <ListItem button>
+        <ListItemIcon>
+          <HomeRoundedIcon />
+        </ListItemIcon>
+        <ListItemText primary="Home" />
+      
+      </ListItem>
+      </Link>
+      <Link to="/product">
+      <ListItem button>
+      <ListItemIcon>
+        <FolderIcon />
+      </ListItemIcon>
+      <ListItemText primary="Products" />
+    </ListItem>
+    </Link>
+      
+      <Link to="/index1">
+      <ListItem button>
+      <ListItemIcon>
+        <ShoppingCartIcon />
+      </ListItemIcon>
+      <ListItemText primary="Restaurants" />
+    </ListItem>
+    </Link>
+
+     <Link to="/customers">  
+    <ListItem button>
+      <ListItemIcon>
+        <PeopleIcon />
+      </ListItemIcon>
+      <ListItemText primary="Customers" />
+    </ListItem>
+    </Link>  
+    
+    <Link to="/ordersdata">
+    <ListItem button>
+      <ListItemIcon>
+        <ShoppingCartIcon />
+      </ListItemIcon>
+      <ListItemText primary="Orders" />
+    </ListItem>
+    </Link>
+        
         <Divider />
-        <List>{secondaryListItems}</List>
+        
+        <Link to="/Analytics">
+        <ListItem button>
+      <ListItemIcon>
+        <AssignmentIcon />
+      </ListItemIcon>
+      <ListItemText primary=" Analytics" />
+    </ListItem>
+    </Link>
+        
+        
+        
+        
       </Drawer>
       <main className={classes.content}>
-        <div className={classes.appBarSpacer} />
+      <div className={classes.appBarSpacer} />
         <Container maxWidth="lg" className={classes.container}>
         <Grid item xs={12} md={4} lg={3}></Grid>
         <Paper className={classes.paper1}>
@@ -223,3 +281,7 @@ export default function Dashboard() {
     </div>
   );
 }
+
+
+ 
+export default  Home;
